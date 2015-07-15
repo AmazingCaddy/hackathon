@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JQueryMobileApp</title>
+
+	<!-- JQueryMobileApp references -->
+	<link href="css/index.css" rel="stylesheet" />
+	<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+
+	<!-- Cordova reference, this is added to your app when it's built. -->
+	<script src="cordova.js"></script>
+	<script src="scripts/platformOverrides.js"></script>
+
+	<!-- jQuery Mobile plugins. -->
+	<script src="scripts/plugins/jquery-1.11.3.min.js"></script>
+	<script src="scripts/plugins/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- Application -->
+	<script src="scripts/sponsor.js"></script>
+
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header">
+			<h1>Sponsor</h1>
+		</div><!-- /header -->
+		<div role="main" class="ui-content">
+			<label for="alias" class="ui-hidden-accessible">Meeting select:</label>
+			<select id="slt-meeting">
+				<option value="1">meeting 1</option>
+				<option value="2">meeting 2</option>
+				<option value="3">meeting 3</option>
+				<option value="4">meeting 4</option>
+			</select>
+			<button id="btn-select-meeting" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left">Select</button>
+		</div><!-- /content -->
+		<!--
+			<div data-role="footer">
+				<h4>Footer Content</h4>
+			</div>
+		-->
+		<!-- /footer -->
+	</div><!-- /page -->
+</body>
+</html>
