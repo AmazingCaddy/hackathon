@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,36 +7,106 @@
 
 	<!-- JQueryMobileApp references -->
 	<link href="css/index.css" rel="stylesheet" />
-	<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+	<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
 
 	<!-- Cordova reference, this is added to your app when it's built. -->
 	<script src="cordova.js"></script>
 	<script src="scripts/platformOverrides.js"></script>
-    
+
 	<!-- jQuery Mobile plugins. -->
 	<script src="scripts/plugins/jquery-1.11.3.min.js"></script>
 	<script src="scripts/plugins/jquery.mobile-1.4.5.min.js"></script>
+	<script src="scripts/plugins/jquery.ui.datepicker-1.11.4.min.js"></script>
+	<script src="scripts/plugins/jquery.storageapi-1.7.3.min.js"></script>
 
 	<!-- Application -->
 	<script src="scripts/index.js"></script>
 
 </head>
 <body>
-	<div data-role="page">
-		<div data-role="header">
-			<h1>Meeting Assistant</h1>
+
+	<section data-role="page" id="page-index" class="ui-shadow swatch">
+		<div class="ui-header ui-bar-a" data-swatch="a" data-theme="a" data-form="ui-bar-a" data-role="header" role="banner">
+			<a href="#page-sponsor" class="ui-btn-left ui-btn ui-btn-icon-notext ui-icon-carat-r ui-btn-corner-all ui-shadow" title="Home" data-form="ui-icon">Home</a>
+			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Meeting Assistant</h1>
 		</div><!-- /header -->
-		<div role="main" class="ui-content">
-			<label for="alias" class="ui-hidden-accessible">Alias Input:</label>
-			<input type="text" id="alias" name="alias" placeholder="Alias" value="" />
-			<button id="btn-sign-in" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left">Sign in</button>
+		
+		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
+			<fieldset data-role="fieldcontain">
+				<label for="alias" class="ui-hidden-accessible">Alias Input:</label>
+				<input type="text" id="alias" name="alias" placeholder="Alias" value="" />
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend>I am: </legend>
+				<input type="radio" name="rad-role" id="rad-role-1" value="sponsor" checked="checked" />
+				<label for="rad-role-1">sponsor</label>
+				<input type="radio" name="rad-role" id="rad-role-2" value="participant" />
+				<label for="rad-role-2">participant</label>
+			</fieldset>
+			<fieldset data-role="controlgroup">
+				<button id="btn-sign-in" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left">Sign in</button>
+			</fieldset>
 		</div><!-- /content -->
-	<!--
+		
 		<div data-role="footer">
 			<h4>Footer Content</h4>
-		</div>
-	-->
-	<!-- /footer -->
-	</div><!-- /page -->
+		</div><!-- /footer -->
+	</section><!-- /page -->
+
+	<section data-role="page" id="page-sponsor">
+		<div class="ui-header ui-bar-a" data-swatch="a" data-theme="a" data-form="ui-bar-a" data-role="header" role="banner">
+			<a href="#page-index" class="ui-btn-left ui-btn ui-btn-icon-notext ui-icon-home ui-btn-corner-all ui-shadow" title="Home" data-form="ui-icon">Home</a>
+			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Sponsor</h1>
+		</div><!-- /header -->
+	
+		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
+			<fieldset data-role="controlgroup">
+				<label for="slt-meeting-sponsor" class="select ui-hidden-accessible">Meeting Select</label>
+				<select id="slt-meeting-sponsor" name="slt-meeting-sponsor" data-native-menu="false">
+					<option id="opt-head-sponsor">Select Meeting to Activate</option>
+					<option value="1">theme, when, location</option>
+				</select>
+			</fieldset>
+			<fieldset data-role="controlgroup">
+				<button id="btn-select-meeting-sponsor" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left">Select</button>
+			</fieldset>
+		</div><!-- /content -->
+	
+		<div data-role="footer">
+			<h4>Footer Content</h4>
+		</div><!-- /footer -->
+	</section><!-- /page -->
+
+	<section data-role="page" id="page-participant">
+		<div class="ui-header ui-bar-a" data-swatch="a" data-theme="a" data-form="ui-bar-a" data-role="header" role="banner">
+			<a href="#page-index" class="ui-btn-left ui-btn ui-btn-icon-notext ui-icon-home ui-btn-corner-all ui-shadow" title="Home" data-form="ui-icon">Home</a>
+			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Participant</h1>
+		</div><!-- /header -->
+	
+		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
+			<fieldset data-role="controlgroup">
+				<label for="slt-meeting-participant" class="select ui-hidden-accessible">Meeting Select</label>
+				<select id="slt-meeting-participant" name="slt-meeting-participant" data-native-menu="false">
+					<option id="op-head-participant">Select Meeting to Participate</option>
+					<option value="1">Participant Meeting One</option>
+				</select>
+			</fieldset>
+			<fieldset data-role="controlgroup">
+				<button id="btn-select-meeting-participant" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left">Select</button>
+			</fieldset>
+		</div><!-- /content -->
+	
+		<div data-role="footer">
+			<h4>Footer Content</h4>
+		</div><!-- /footer -->
+	</section><!-- /page -->
+
+	<div style="display:none;">
+		<!-- set page switch control -->
+		<a id="go-index" href="#page-index" class="ui-hidden-accessible"></a>
+		<a id="go-sponsor" href="#page-sponsor" class="ui-hidden-accessible"></a>
+		<a id="go-participant" href="#page-participant" class="ui-hidden-accessible"></a>
+	</div>
+
 </body>
 </html>

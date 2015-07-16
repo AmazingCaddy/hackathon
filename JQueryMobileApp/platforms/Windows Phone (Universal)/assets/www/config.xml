@@ -90,8 +90,6 @@
   <platform name="wp8">
     <splash src="res/screens/wp8/SplashScreenImage.jpg" width="480" height="800" />
   </platform>
-  <vs:plugin name="org.apache.cordova.battery-status" version="0.2.12" />
-  <vs:plugin name="org.apache.cordova.console" version="0.2.13" />
   <preference name="KeepRunning" value="False" />
   <preference name="ShowTitle" value="True" />
   <preference name="InAppBrowserStorageEnabled" value="False" />
