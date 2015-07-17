@@ -62,9 +62,9 @@
 		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
 			<fieldset data-role="controlgroup">
 				<label for="slt-meeting-sponsor" class="select ui-hidden-accessible">Meeting Select</label>
-				<select id="slt-meeting-sponsor" name="slt-meeting-sponsor" data-native-menu="false">
-					<option id="opt-head-sponsor">Select Meeting to Activate</option>
-					<option value="1">theme, when, location</option>
+				<select id="slt-meeting-sponsor" name="slt-meeting-sponsor">
+					<option value="-1" id="opt-head-sponsor">Select Meeting to Activate</option>
+					<option value="1" id="opt-head-sponsor" selected="selected">Meeting One</option>
 				</select>
 			</fieldset>
 			<fieldset data-role="controlgroup">
@@ -86,9 +86,8 @@
 		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
 			<fieldset data-role="controlgroup">
 				<label for="slt-meeting-participant" class="select ui-hidden-accessible">Meeting Select</label>
-				<select id="slt-meeting-participant" name="slt-meeting-participant" data-native-menu="false">
-					<option id="op-head-participant">Select Meeting to Participate</option>
-					<option value="1">Participant Meeting One</option>
+				<select id="slt-meeting-participant" name="slt-meeting-participant">
+					<option value="-1" id="op-head-participant">Select Meeting to Participate</option>
 				</select>
 			</fieldset>
 			<fieldset data-role="controlgroup">

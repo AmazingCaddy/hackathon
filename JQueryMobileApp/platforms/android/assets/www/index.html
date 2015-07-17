@@ -27,6 +27,7 @@
 
 	<section data-role="page" id="page-index" class="ui-shadow swatch">
 		<div class="ui-header ui-bar-a" data-swatch="a" data-theme="a" data-form="ui-bar-a" data-role="header" role="banner">
+			<a href="#page-sponsor" class="ui-btn-left ui-btn ui-btn-icon-notext ui-icon-carat-r ui-btn-corner-all ui-shadow" title="Home" data-form="ui-icon">Home</a>
 			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Meeting Assistant</h1>
 		</div><!-- /header -->
 		
@@ -61,12 +62,9 @@
 		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
 			<fieldset data-role="controlgroup">
 				<label for="slt-meeting-sponsor" class="select ui-hidden-accessible">Meeting Select</label>
-				<select id="slt-meeting-sponsor" name="slt-meeting-sponsor" data-native-menu="false">
-					<option id="opt-head-sponsor">Select Meeting to Activate</option>
-					<option value="1">Sponsor Meeting One</option>
-					<option value="2">Sponsor Meeting Two</option>
-					<option value="3">Sponsor Meeting Three</option>
-					<option value="4">Sponsor Meeting Four</option>
+				<select id="slt-meeting-sponsor" name="slt-meeting-sponsor">
+					<option value="-1" id="opt-head-sponsor">Select Meeting to Activate</option>
+					<option value="1" id="opt-head-sponsor" selected="selected">Meeting One</option>
 				</select>
 			</fieldset>
 			<fieldset data-role="controlgroup">
@@ -88,12 +86,8 @@
 		<div role="main" class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a">
 			<fieldset data-role="controlgroup">
 				<label for="slt-meeting-participant" class="select ui-hidden-accessible">Meeting Select</label>
-				<select id="slt-meeting-participant" name="slt-meeting-participant" data-native-menu="false">
-					<option id="op-head-participant">Select Meeting to Participate</option>
-					<option value="1">Participant Meeting One</option>
-					<option value="2">Participant Meeting Two</option>
-					<option value="3">Participant Meeting Three</option>
-					<option value="4">Participant Meeting Four</option>
+				<select id="slt-meeting-participant" name="slt-meeting-participant">
+					<option value="-1" id="op-head-participant">Select Meeting to Participate</option>
 				</select>
 			</fieldset>
 			<fieldset data-role="controlgroup">
