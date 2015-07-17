@@ -127,6 +127,7 @@
     "www\\images\\icons-svg\\audio-black.svg",
     "plugins\\fetch.json",
     "plugins\\org.apache.cordova.dialogs\\doc\\fr\\index.md",
+    "config.xml",
     "www\\images\\icons-svg\\gear-black.svg",
     "www\\images\\icons-svg\\arrow-u-white.svg",
     "plugins\\org.apache.cordova.dialogs\\src\\ubuntu\\notification.h",
@@ -322,8 +323,7 @@
     "www\\images\\icons-svg\\clock-black.svg",
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\images\\icons-svg\\forward-white.svg",
-    "www\\images\\icons-png\\edit-black.png",
-    "config.xml"
+    "www\\images\\icons-png\\edit-black.png"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [
@@ -331,7 +331,8 @@
   ],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "plugins\\windows.json"
+    "plugins\\windows.json",
+    "www\\scripts\\index.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

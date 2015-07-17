@@ -16,14 +16,22 @@ var service = {
 			"data": data,
 			success: function (data, status, $jq) {
 				var result = data["result"];
-				var $select = $("#slt-meeting-" + role);
-				_this.options(data["meetings"], $select, role);
-				$("#go-" + role).click();
+				if (result["status"] == 0) {
+					var result = data["result"];
+					var $select = $("#slt-meeting-" + role);
+					_this.options(data["meetings"], $select, role);
+					$("#go-" + role).click();
+					return;
+				}
+				_this.doResult(result);
 			},
 			error: function ($jq, status, e) {
 				_this.showError(
 					"Something Wrong on the Server",
-					function () { },
+					function () {
+						$("#alias").val("");
+						$("#go-index").click();
+					},
 					e
 				);
 			}
@@ -33,6 +41,9 @@ var service = {
 	signIn: function (role, meetingId) {
 		var _this = this;
 		console.log(meetingId);
+		if (meetingId == "-1") {
+			return;
+		}
 		var api = "http://localhost:25368/meetings/" + (role == "sponsor" ? "startmeeting" : "signinmeeting");
 		$.ajax({
 			url: api,
@@ -44,7 +55,9 @@ var service = {
 				"meetingid": meetingId
 			},
 			success: function (data, status, $jq) {
-				_this.showSuccess("operate successfully!", function () {
+				var result = data["result"];
+				_this.doResult(result, function () {
+					$("#alias").val("");
 					$("#go-index").click();
 				});
 				console.log(JSON.stringify(data));
@@ -60,10 +73,37 @@ var service = {
 		});
 	},
 
-	doResult: function (result, msg) {
+	callbacks: [
+		function () {
+			$("#go-index").click();
+		},
+		function () {
+			$("#go-index").click();
+		},
+		function () {
+			$("#go-index").click();
+		},
+		function () {
+			$("#go-index").click();
+		},
+		function () {
+			$("#go-index").click();
+		},
+		function () {
+			$("#go-index").click();
+		}
+	],
+
+	doResult: function (result, func) {
 		var _this = this;
-		
-		//_this.showError(msg, )
+		var title = (result["status"] == 0 ? "SUCCESS" : "ERROR");
+		var callback = ((typeof func == "undefined") ? _this.callbacks[result["status"]] : func);
+		navigator.notification.alert(
+			result["message"],
+			callback,
+			title,
+			"OK"
+		);
 	},
 
 	showSuccess: function (msg, callback) {
@@ -90,15 +130,31 @@ var service = {
 		var _this = this;
 		var $option = $("<option>");
 		$select.empty();
-		$select.append($option.clone().text("Select Meeting to Activate").prop("id", "opt-head-" + role));
+		$select.selectmenu();
+		var text = (role == "sponsor" ? "Select Meeting to Activate" : "Select Meeting to Participate");
+		var $optionTemp = $option.clone();
+		$optionTemp.text(text).val(-1).prop("id", "opt-head-" + role);
+		$optionTemp.prop("selected", true);
+		$select.append($optionTemp);
 		for (var i = 0; i < meetings.length; i++) {
-			var $optionTemp = $option.clone();
+			$optionTemp = $option.clone();
 			$optionTemp.val(meetings[i]["Id"]);
-			$optionTemp.text(meetings[i]["Theme"]);
+			var startTime = _this.datetimeCsharp2js(meetings[i]["StartTime"]);
+			var endTime = _this.datetimeCsharp2js(meetings[i]["EndTime"]);
+			var optText = meetings[i]["Theme"] + ", " + $.datepicker.formatDate("yy-mm-dd", startTime) + " " + startTime.getHours() + ":" + startTime.getMinutes() + " to " + $.datepicker.formatDate("yy-mm-dd", endTime) + " " + endTime.getHours() + ":" + endTime.getMinutes();
+			console.log(optText);
+			$optionTemp.text(optText);
 			$select.append($optionTemp);
 		}
+		$select.selectmenu("refresh", true);
 		console.log($("#slt-meeting-" + role).html());
+	},
+
+	datetimeCsharp2js: function (cSharpDate) {
+		var milli = cSharpDate.replace(/\/Date\((-?\d+)\)\//, '$1');
+		return new Date(parseInt(milli));
 	}
+
 }
 
 $(document).ready(function () {
